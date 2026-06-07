@@ -420,7 +420,12 @@ const APP_URLS = {
 let sb = null;
 
 window.addEventListener('DOMContentLoaded', async () => {
-  sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
+    auth: {
+      storageKey: 'aquacore-auth',
+      storage: window.localStorage
+    }
+  });
   const { data: { session } } = await sb.auth.getSession();
   if (session) { onAuth(session); return; }
   sb.auth.onAuthStateChange((event, session) => {
