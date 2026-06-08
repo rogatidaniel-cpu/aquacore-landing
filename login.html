@@ -407,6 +407,27 @@ footer {
 <footer>AQUACORE.AI · v2.0 · getaquacore.com</footer>
 
 <script>
+(async function() {
+  if (window.location.hash.includes('access_token')) {
+    const SB_URL = 'https://vqfzywjiyzpwhzqwixex.supabase.co';
+    const SB_KEY = 'sb_publishable_GnNyFpSAurKKp6sOl9xc6w_zXCHGa9m';
+    const sb = window.supabase.createClient(SB_URL, SB_KEY, {
+      auth: { storageKey: 'aquacore-auth', storage: window.localStorage }
+    });
+    const { data: { session } } = await sb.auth.getSession();
+    if (session) {
+      const app = localStorage.getItem('acore_pending_app') || 'coach';
+      const urls = {
+        coach:      'https://coach.getaquacore.com',
+        triathlete: 'https://triathlete.getaquacore.com',
+        athlete:    'https://athlete.getaquacore.com',
+        openwater:  'https://openwater.getaquacore.com'
+      };
+      window.location.replace(urls[app] || urls.coach);
+    }
+  }
+})();
+
 const SUPABASE_URL = 'https://vqfzywjiyzpwhzqwixex.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_GnNyFpSAurKKp6sOl9xc6w_zXCHGa9m';
 
@@ -440,7 +461,7 @@ async function signInWithGoogle() {
   const { error } = await sb.auth.signInWithOAuth({
     provider: 'google',
     options: {
-      redirectTo: window.location.href,
+      redirectTo: 'https://getaquacore.com/login',
       queryParams: { access_type: 'offline', prompt: 'select_account' }
     }
   });
