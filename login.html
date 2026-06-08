@@ -425,6 +425,8 @@ footer {
       };
       const base = urls[app] || urls.coach;
       const refreshToken = session.refresh_token;
+      console.log('[ACore] pending app:', localStorage.getItem('acore_pending_app'));
+      console.log('[ACore] redirecting to:', base);
       window.location.replace(base + '?sb_refresh=' + encodeURIComponent(refreshToken));
     }
   }
