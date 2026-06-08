@@ -423,7 +423,9 @@ footer {
         athlete:    'https://athlete.getaquacore.com',
         openwater:  'https://openwater.getaquacore.com'
       };
-      window.location.replace(urls[app] || urls.coach);
+      const base = urls[app] || urls.coach;
+      const refreshToken = session.refresh_token;
+      window.location.replace(base + '?sb_refresh=' + encodeURIComponent(refreshToken));
     }
   }
 })();
