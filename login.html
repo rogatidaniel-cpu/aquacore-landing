@@ -409,6 +409,9 @@ footer {
 <script>
 (async function() {
   if (window.location.hash.includes('access_token')) {
+    console.log('[ACore Login] hash detected');
+    console.log('[ACore Login] pending app value:', localStorage.getItem('acore_pending_app'));
+    console.log('[ACore Login] all localStorage:', JSON.stringify(localStorage));
     const SB_URL = 'https://vqfzywjiyzpwhzqwixex.supabase.co';
     const SB_KEY = 'sb_publishable_GnNyFpSAurKKp6sOl9xc6w_zXCHGa9m';
     const sb = window.supabase.createClient(SB_URL, SB_KEY, {
