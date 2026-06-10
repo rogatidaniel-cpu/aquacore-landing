@@ -507,8 +507,8 @@ function onAuth(session) {
     localStorage.removeItem('acore_pending_app');
     setTimeout(() => window.location.href = APP_URLS[pending], 1000);
   } else {
-    document.getElementById('redirectMsg').textContent = 'Choose your app below.';
-    document.getElementById('appSelector').style.display = 'flex';
+    document.getElementById('redirectMsg').textContent = 'Redirecting…';
+    setTimeout(() => window.location.href = APP_URLS['coach'], 1000);
   }
 }
 
