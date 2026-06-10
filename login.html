@@ -501,15 +501,11 @@ function onAuth(session) {
     || session.user?.user_metadata?.full_name?.split(' ')[0]
     || '';
   document.getElementById('welcomeMsg').textContent = name ? `Welcome back, ${name}!` : 'Welcome back!';
-  const pending = localStorage.getItem('acore_pending_app');
-  if (pending && APP_URLS[pending]) {
-    document.getElementById('redirectMsg').textContent = `Opening ${pending}…`;
-    localStorage.removeItem('acore_pending_app');
-    setTimeout(() => window.location.href = APP_URLS[pending], 1000);
-  } else {
-    document.getElementById('redirectMsg').textContent = 'Redirecting…';
-    setTimeout(() => window.location.href = APP_URLS['coach'], 1000);
-  }
+  const params = new URLSearchParams(window.location.search);
+  const appParam = params.get('app');
+  const target = appParam && APP_URLS[appParam] ? APP_URLS[appParam] : APP_URLS['coach'];
+  document.getElementById('redirectMsg').textContent = 'Redirecting…';
+  setTimeout(() => window.location.href = target, 1000);
 }
 
 function goToApp(key) {
