@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="AQUACORE.AI — Train smarter. Race faster. Four apps built for aquatic performance.">
+<meta name="theme-color" content="#020810">
+<title>AQUACORE.AI — Train smarter. Race faster.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root {
+  --void:   #020810;
+  --deep:   #060d18;
+  --mid:    #0b1422;
+  --raised: #111d30;
+
+  --ink-hi:  #f0f6ff;
+  --ink-mid: #7a9ab8;
+  --ink-lo:  #3d5470;
+
+  /* App identity colors — updated */
+  --coach:   #c8ff00;
+  --tri:     #ff6b35;
+  --athlete: #a855f7;
+  --ow:      #00c8ff;
+
+  --font-ui: 'Syne', system-ui, sans-serif;
+  --font-m:  'DM Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--void);
+  color: var(--ink-hi);
+  font-family: var(--font-ui);
+  line-height: 1.5;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,200,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,200,255,0.018) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none; z-index: 0;
+}
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 16px 48px;
+  background: rgba(2,8,16,0.88);
+  backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: background 0.3s;
+}
+.nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo-name {
+  font-family: var(--font-ui); font-size: 1rem; font-weight: 800;
+  letter-spacing: -0.02em; color: var(--ink-hi);
+}
+.nav-logo-name span { color: var(--ow); }
+.nav-links { display: flex; gap: 28px; align-items: center; }
+.nav-links a {
+  font-family: var(--font-m); font-size: 0.66rem;
+  letter-spacing: 0.1em; color: var(--ink-lo);
+  text-decoration: none; text-transform: uppercase; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--ink-hi); }
+.nav-cta {
+  background: var(--ow); color: #000;
+  padding: 8px 18px; border-radius: 6px;
+  font-family: var(--font-m); font-size: 0.66rem;
+  font-weight: 700; letter-spacing: 0.08em;
+  text-decoration: none; transition: filter 0.2s;
+}
+.nav-cta:hover { filter: brightness(1.1); }
+
+/* ── HERO ── */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  padding: 120px 48px 100px; overflow: hidden; z-index: 1;
+}
+
+.hero-watermark {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -52%);
+  width: min(700px, 90vw); height: min(700px, 90vw);
+  pointer-events: none; z-index: 0;
+}
+.hero-watermark svg { width: 100%; height: 100%; opacity: 0.05; }
+
+.hero-rings {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none; z-index: 0;
+}
+.ring {
+  position: absolute; border-radius: 50%;
+  border: 1px solid rgba(0,200,255,0.06);
+  animation: ringPulse 10s ease-in-out infinite;
+  transform: translate(-50%, -50%); top: 0; left: 0;
+}
+.ring:nth-child(1){width:200px;height:200px;animation-delay:0s}
+.ring:nth-child(2){width:400px;height:400px;animation-delay:1.5s}
+.ring:nth-child(3){width:620px;height:620px;animation-delay:3s}
+.ring:nth-child(4){width:860px;height:860px;animation-delay:4.5s}
+.ring:nth-child(5){width:1100px;height:1100px;animation-delay:6s}
+@keyframes ringPulse { 0%,100%{opacity:0.5} 50%{opacity:0.12} }
+
+.hero-content {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column;
+  align-items: center; text-align: center;
+}
+
+.hero-brand {
+  display: flex; align-items: center; gap: 16px;
+  margin-bottom: 36px;
+  animation: fadeUp 0.7s ease both;
+}
+.hero-brand-mark { width: 56px; height: 56px; }
+.hero-brand-text { display: flex; flex-direction: column; gap: 3px; text-align: left; }
+.hero-brand-name {
+  font-family: var(--font-ui); font-size: 2rem; font-weight: 800;
+  letter-spacing: -0.02em; color: var(--ink-hi); line-height: 1;
+}
+.hero-brand-name span { color: var(--ow); }
+.hero-brand-tagline {
+  font-family: var(--font-m); font-size: 0.58rem;
+  letter-spacing: 0.18em; color: var(--ink-lo); text-transform: uppercase;
+}
+
+.hero-claim {
+  font-family: var(--font-ui); font-weight: 800;
+  font-size: clamp(3.5rem, 9.5vw, 8rem);
+  letter-spacing: -0.03em; line-height: 0.92;
+  color: var(--ink-hi);
+  animation: fadeUp 0.7s 0.1s ease both; margin-bottom: 6px;
+}
+.hero-claim .outline {
+  color: transparent;
+  -webkit-text-stroke: 1.5px rgba(0,200,255,0.45);
+}
+
+.hero-sub {
+  font-family: var(--font-ui); font-size: clamp(0.95rem, 2vw, 1.1rem);
+  font-weight: 400; color: var(--ink-mid);
+  margin-top: 24px; letter-spacing: 0.02em;
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+.hero-sub strong { color: var(--ink-hi); font-weight: 700; }
+
+.hero-apps-strip {
+  display: flex; gap: 10px; margin-top: 44px;
+  animation: fadeUp 0.7s 0.3s ease both;
+  flex-wrap: wrap; justify-content: center;
+}
+.hero-app-chip {
+  display: flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.06);
+  padding: 8px 14px; border-radius: 8px;
+  transition: border-color 0.2s, background 0.2s; cursor: default;
+}
+.hero-app-chip.coach  { border-color: rgba(200,255,0,0.2); }
+.hero-app-chip.tri    { border-color: rgba(255,107,53,0.2); }
+.hero-app-chip.ath    { border-color: rgba(168,85,247,0.2); }
+.hero-app-chip.ow     { border-color: rgba(0,200,255,0.2); }
+.hero-app-chip.coach:hover  { border-color: rgba(200,255,0,0.5); background: rgba(200,255,0,0.04); }
+.hero-app-chip.tri:hover    { border-color: rgba(255,107,53,0.5); background: rgba(255,107,53,0.04); }
+.hero-app-chip.ath:hover    { border-color: rgba(168,85,247,0.5); background: rgba(168,85,247,0.04); }
+.hero-app-chip.ow:hover     { border-color: rgba(0,200,255,0.5); background: rgba(0,200,255,0.04); }
+.chip-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.chip-name {
+  font-family: var(--font-m); font-size: 0.7rem;
+  font-weight: 700; letter-spacing: 0.08em; line-height: 1;
+}
+.chip-name.coach  { color: var(--coach); }
+.chip-name.tri    { color: var(--tri); }
+.chip-name.ath    { color: var(--athlete); }
+.chip-name.ow     { color: var(--ow); }
+
+.hero-actions {
+  display: flex; gap: 12px; margin-top: 44px;
+  animation: fadeUp 0.7s 0.4s ease both;
+  flex-wrap: wrap; justify-content: center;
+}
+.btn-primary {
+  background: var(--ow); color: #000;
+  padding: 14px 32px; border-radius: 6px;
+  font-family: var(--font-m); font-size: 0.72rem;
+  font-weight: 700; letter-spacing: 0.1em;
+  text-decoration: none; text-transform: uppercase;
+  transition: all 0.2s; border: none; cursor: pointer;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-primary:hover { filter: brightness(1.1); transform: translateY(-1px); }
+.btn-ghost {
+  background: transparent; color: var(--ink-mid);
+  padding: 14px 32px; border-radius: 6px;
+  font-family: var(--font-m); font-size: 0.72rem;
+  letter-spacing: 0.1em; text-decoration: none; text-transform: uppercase;
+  border: 1px solid rgba(255,255,255,0.1); transition: all 0.2s;
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.btn-ghost:hover { color: var(--ink-hi); border-color: rgba(255,255,255,0.25); }
+
+.hero-auth-note {
+  margin-top: 16px;
+  font-family: var(--font-m); font-size: 0.58rem;
+  letter-spacing: 0.1em; color: var(--ink-lo);
+  display: flex; align-items: center; gap: 7px;
+  animation: fadeUp 0.7s 0.5s ease both;
+}
+.google-g {
+  width: 14px; height: 14px; border-radius: 50%;
+  background: rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center;
+  font-family: sans-serif; font-size: 9px; font-weight: 700; color: var(--ink-mid);
+}
+
+.hero-stats {
+  display: flex; gap: 48px; margin-top: 64px;
+  animation: fadeUp 0.7s 0.55s ease both;
+  flex-wrap: wrap; justify-content: center;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding-top: 40px; width: 100%; max-width: 700px;
+}
+.stat { text-align: center; }
+.stat-num {
+  font-family: var(--font-ui); font-size: 2rem; font-weight: 800;
+  letter-spacing: -0.02em; color: var(--ink-hi); line-height: 1;
+}
+.stat-num span { color: var(--ow); }
+.stat-label {
+  font-family: var(--font-m); font-size: 0.56rem;
+  letter-spacing: 0.14em; color: var(--ink-lo);
+  text-transform: uppercase; margin-top: 4px;
+}
+
+.scroll-hint {
+  position: absolute; bottom: 28px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 7px;
+  animation: fadeUp 1s 0.9s ease both; z-index: 2;
+}
+.scroll-hint-line {
+  width: 1px; height: 36px;
+  background: linear-gradient(to bottom, rgba(0,200,255,0.35), transparent);
+  animation: scrollPulse 2.5s ease-in-out infinite;
+}
+.scroll-hint-label {
+  font-family: var(--font-m); font-size: 0.5rem;
+  letter-spacing: 0.2em; color: var(--ink-lo); text-transform: uppercase;
+}
+@keyframes scrollPulse { 0%,100%{opacity:0.35} 50%{opacity:1} }
+@keyframes fadeUp {
+  from { opacity:0; transform:translateY(20px); }
+  to   { opacity:1; transform:translateY(0); }
+}
+
+/* ── APPS SECTION ── */
+.apps-section { position: relative; z-index: 1; padding: 100px 48px; }
+.section-header { text-align: center; margin-bottom: 60px; }
+.section-overline {
+  font-family: var(--font-m); font-size: 0.62rem;
+  letter-spacing: 0.2em; color: var(--ink-lo);
+  text-transform: uppercase; margin-bottom: 14px;
+}
+.section-title {
+  font-family: var(--font-ui); font-weight: 800;
+  font-size: clamp(2.2rem, 5vw, 3.6rem);
+  letter-spacing: -0.03em; line-height: 1; color: var(--ink-hi);
+}
+.section-title span { color: var(--ow); }
+
+.apps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2px; background: rgba(255,255,255,0.03);
+  border-radius: 16px; overflow: hidden;
+  max-width: 1300px; margin: 0 auto;
+}
+
+.app-card {
+  background: var(--deep); padding: 40px 32px;
+  display: flex; flex-direction: column;
+  position: relative; overflow: hidden; transition: background 0.3s;
+}
+.app-card::before {
+  content: ''; position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+}
+.app-card.coach::before   { background: var(--coach); }
+.app-card.tri::before     { background: var(--tri); }
+.app-card.athlete::before { background: var(--athlete); }
+.app-card.ow::before      { background: var(--ow); }
+.app-card:hover { background: var(--mid); }
+
+.app-card-bg-letter {
+  position: absolute; bottom: -20px; right: -8px;
+  font-family: var(--font-ui); font-size: 9rem; font-weight: 800;
+  line-height: 1; opacity: 0.04; pointer-events: none; user-select: none;
+}
+.app-icon-mark {
+  width: 46px; height: 46px; border-radius: 11px;
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 24px; flex-shrink: 0;
+}
+.app-parent-label {
+  font-family: var(--font-m); font-size: 0.56rem;
+  letter-spacing: 0.16em; text-transform: uppercase;
+  color: var(--ink-lo); margin-bottom: 5px;
+}
+.app-product-name {
+  font-family: var(--font-ui); font-weight: 800;
+  font-size: 2rem; letter-spacing: -0.02em; line-height: 1; margin-bottom: 12px;
+}
+.app-description {
+  font-family: var(--font-ui); font-size: 0.86rem;
+  font-weight: 400; color: var(--ink-mid);
+  line-height: 1.65; flex: 1; margin-bottom: 24px;
+}
+.app-features { display: flex; flex-direction: column; gap: 5px; margin-bottom: 28px; }
+.app-feature {
+  font-family: var(--font-m); font-size: 0.62rem;
+  letter-spacing: 0.05em; color: var(--ink-lo);
+  display: flex; align-items: center; gap: 8px;
+}
+.app-feature::before { content: ''; width: 14px; height: 1px; flex-shrink: 0; }
+
+.app-install-btn {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 11px 15px; border-radius: 8px;
+  border: 1px solid transparent; text-decoration: none;
+  font-family: var(--font-m); font-size: 0.66rem;
+  font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase;
+  transition: all 0.2s; cursor: pointer; background: none; width: 100%;
+}
+.app-install-btn .install-arrow { transition: transform 0.2s; }
+.app-install-btn:hover .install-arrow { transform: translateX(4px); }
+
+.app-card.coach .app-product-name    { color: var(--coach); }
+.app-card.coach .app-card-bg-letter  { color: var(--coach); }
+.app-card.coach .app-feature::before { background: var(--coach); }
+.app-card.coach .app-icon-mark       { background: rgba(200,255,0,0.07); border: 1px solid rgba(200,255,0,0.18); }
+.app-card.coach .app-install-btn     { color: var(--coach); border-color: rgba(200,255,0,0.22); background: rgba(200,255,0,0.04); }
+.app-card.coach .app-install-btn:hover { background: rgba(200,255,0,0.1); border-color: rgba(200,255,0,0.5); }
+
+.app-card.tri .app-product-name    { color: var(--tri); }
+.app-card.tri .app-card-bg-letter  { color: var(--tri); }
+.app-card.tri .app-feature::before { background: var(--tri); }
+.app-card.tri .app-icon-mark       { background: rgba(255,107,53,0.07); border: 1px solid rgba(255,107,53,0.18); }
+.app-card.tri .app-install-btn     { color: var(--tri); border-color: rgba(255,107,53,0.22); background: rgba(255,107,53,0.04); }
+.app-card.tri .app-install-btn:hover { background: rgba(255,107,53,0.1); border-color: rgba(255,107,53,0.5); }
+
+.app-card.athlete .app-product-name    { color: var(--athlete); }
+.app-card.athlete .app-card-bg-letter  { color: var(--athlete); }
+.app-card.athlete .app-feature::before { background: var(--athlete); }
+.app-card.athlete .app-icon-mark       { background: rgba(168,85,247,0.07); border: 1px solid rgba(168,85,247,0.18); }
+.app-card.athlete .app-install-btn     { color: var(--athlete); border-color: rgba(168,85,247,0.22); background: rgba(168,85,247,0.04); }
+.app-card.athlete .app-install-btn:hover { background: rgba(168,85,247,0.1); border-color: rgba(168,85,247,0.5); }
+
+.app-card.ow .app-product-name    { color: var(--ow); }
+.app-card.ow .app-card-bg-letter  { color: var(--ow); }
+.app-card.ow .app-feature::before { background: var(--ow); }
+.app-card.ow .app-icon-mark       { background: rgba(0,200,255,0.07); border: 1px solid rgba(0,200,255,0.18); }
+.app-card.ow .app-install-btn     { color: var(--ow); border-color: rgba(0,200,255,0.22); background: rgba(0,200,255,0.04); }
+.app-card.ow .app-install-btn:hover { background: rgba(0,200,255,0.1); border-color: rgba(0,200,255,0.5); }
+
+/* ── HOW IT WORKS ── */
+.how-section {
+  position: relative; z-index: 1; padding: 100px 48px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+.steps-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2px; max-width: 1100px; margin: 0 auto;
+  background: rgba(255,255,255,0.02); border-radius: 12px; overflow: hidden;
+}
+.step { padding: 40px 32px; background: var(--deep); }
+.step-num {
+  font-family: var(--font-ui); font-size: 3.5rem; font-weight: 800;
+  color: rgba(0,200,255,0.07); line-height: 1; margin-bottom: 18px;
+}
+.step-title {
+  font-family: var(--font-ui); font-weight: 800;
+  font-size: 1.2rem; letter-spacing: -0.01em;
+  color: var(--ink-hi); margin-bottom: 10px; line-height: 1;
+}
+.step-desc {
+  font-family: var(--font-ui); font-size: 0.84rem;
+  font-weight: 400; color: var(--ink-mid); line-height: 1.65;
+}
+.step-note {
+  margin-top: 10px; display: flex; align-items: center; gap: 7px;
+  font-family: var(--font-m); font-size: 0.58rem;
+  letter-spacing: 0.08em; color: var(--ow);
+}
+
+/* ── ECOSYSTEM ── */
+.ecosystem-strip {
+  position: relative; z-index: 1; padding: 80px 48px;
+  border-top: 1px solid rgba(255,255,255,0.04); text-align: center;
+}
+.eco-title {
+  font-family: var(--font-ui); font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  letter-spacing: -0.02em; color: var(--ink-hi); margin-bottom: 12px;
+}
+.eco-title span { color: var(--ow); }
+.eco-sub {
+  font-family: var(--font-ui); font-size: 0.9rem;
+  font-weight: 400; color: var(--ink-mid);
+  max-width: 500px; margin: 0 auto 36px; line-height: 1.7;
+}
+.eco-tech-stack {
+  display: flex; flex-wrap: wrap; gap: 7px;
+  justify-content: center; max-width: 680px; margin: 0 auto;
+}
+.tech-pill {
+  font-family: var(--font-m); font-size: 0.58rem;
+  letter-spacing: 0.1em; padding: 5px 11px; border-radius: 4px;
+  background: var(--raised); border: 1px solid rgba(255,255,255,0.05);
+  color: var(--ink-lo); text-transform: uppercase;
+}
+.tech-pill.highlight {
+  border-color: rgba(0,200,255,0.25); color: var(--ow);
+  background: rgba(0,200,255,0.05);
+}
+
+/* ── FOOTER ── */
+footer {
+  position: relative; z-index: 1; padding: 36px 48px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  display: flex; justify-content: space-between;
+  align-items: center; flex-wrap: wrap; gap: 16px;
+}
+.footer-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+.footer-logo-name {
+  font-family: var(--font-ui); font-size: 0.9rem; font-weight: 800;
+  letter-spacing: -0.02em; color: var(--ink-hi);
+}
+.footer-logo-name span { color: var(--ow); }
+.footer-copy { font-family: var(--font-m); font-size: 0.56rem; letter-spacing: 0.1em; color: var(--ink-lo); }
+.footer-links { display: flex; gap: 22px; }
+.footer-links a {
+  font-family: var(--font-m); font-size: 0.56rem;
+  letter-spacing: 0.1em; color: var(--ink-lo);
+  text-decoration: none; text-transform: uppercase; transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--ink-hi); }
+
+/* ── PWA TOAST ── */
+.pwa-toast {
+  position: fixed; bottom: 24px; left: 50%;
+  transform: translateX(-50%) translateY(100px);
+  background: var(--raised); border: 1px solid rgba(0,200,255,0.2);
+  border-radius: 12px; padding: 13px 18px;
+  display: flex; align-items: center; gap: 12px;
+  z-index: 200; transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+  white-space: nowrap; box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+.pwa-toast.show { transform: translateX(-50%) translateY(0); }
+.pwa-toast-text { font-family: var(--font-m); font-size: 0.68rem; letter-spacing: 0.06em; color: var(--ink-hi); }
+.pwa-toast-text span { color: var(--ow); }
+.pwa-toast-btn {
+  background: var(--ow); color: #000;
+  border: none; padding: 7px 13px; border-radius: 5px;
+  font-family: var(--font-m); font-size: 0.62rem;
+  font-weight: 700; letter-spacing: 0.08em; cursor: pointer;
+}
+.pwa-toast-close {
+  background: none; border: none; color: var(--ink-lo);
+  cursor: pointer; font-size: 0.9rem; padding: 2px 4px; transition: color 0.2s;
+}
+.pwa-toast-close:hover { color: var(--ink-hi); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 13px 18px; }
+  .nav-links { display: none; }
+  .hero { padding: 90px 20px 90px; }
+  .apps-section, .how-section, .ecosystem-strip { padding: 64px 18px; }
+  footer { padding: 28px 18px; flex-direction: column; text-align: center; }
+  .hero-stats { gap: 24px; }
+  .hero-brand-name { font-size: 1.6rem; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="https://getaquacore.com" class="nav-logo">
+    <svg width="28" height="28" viewBox="0 0 100 100" fill="none">
+      <path d="M5 25H75L95 50L75 75H5L25 50L5 25Z" fill="var(--ow)"/>
+      <path d="M25 37H70L80 50L70 63H25L35 50L25 37Z" fill="#020810"/>
+      <path d="M45 45H65L69 50L65 55H45L49 50L45 45Z" fill="var(--ow)"/>
+    </svg>
+    <div class="nav-logo-name">AQUA<span>CORE</span>.AI</div>
+  </a>
+  <div class="nav-links">
+    <a href="#apps">Apps</a>
+    <a href="#how">How it works</a>
+    <a href="#ecosystem">Ecosystem</a>
+    <a href="#apps" class="nav-cta">Get the apps</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+
+  <div class="hero-watermark">
+    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5 25H75L95 50L75 75H5L25 50L5 25Z" fill="none" stroke="#00c8ff" stroke-width="0.8"/>
+      <path d="M25 37H70L80 50L70 63H25L35 50L25 37Z" fill="none" stroke="rgba(0,200,255,0.3)" stroke-width="0.5"/>
+      <path d="M45 45H65L69 50L65 55H45L49 50L45 45Z" fill="none" stroke="#00c8ff" stroke-width="0.8"/>
+    </svg>
+  </div>
+
+  <div class="hero-rings">
+    <div class="ring"></div><div class="ring"></div><div class="ring"></div>
+    <div class="ring"></div><div class="ring"></div>
+  </div>
+
+  <div class="hero-content">
+
+    <div class="hero-brand">
+      <svg class="hero-brand-mark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 25H75L95 50L75 75H5L25 50L5 25Z" fill="var(--ow)"/>
+        <path d="M25 37H70L80 50L70 63H25L35 50L25 37Z" fill="#020810"/>
+        <path d="M45 45H65L69 50L65 55H45L49 50L45 45Z" fill="var(--ow)"/>
+      </svg>
+      <div class="hero-brand-text">
+        <div class="hero-brand-name">AQUA<span>CORE</span>.AI</div>
+        <div class="hero-brand-tagline">Intelligent Aquatic Performance</div>
+      </div>
+    </div>
+
+    <h1 class="hero-claim">
+      Train smarter.<br>
+      <span class="outline">Race faster.</span>
+    </h1>
+
+    <p class="hero-sub"><strong>Four apps.</strong> One ecosystem. Built for the water.</p>
+
+    <div class="hero-apps-strip">
+      <div class="hero-app-chip coach">
+        <div class="chip-dot" style="background:var(--coach)"></div>
+        <span class="chip-name coach">COACH</span>
+      </div>
+      <div class="hero-app-chip tri">
+        <div class="chip-dot" style="background:var(--tri)"></div>
+        <span class="chip-name tri">TRIATHLETE</span>
+      </div>
+      <div class="hero-app-chip ath">
+        <div class="chip-dot" style="background:var(--athlete)"></div>
+        <span class="chip-name ath">ATHLETE</span>
+      </div>
+      <div class="hero-app-chip ow">
+        <div class="chip-dot" style="background:var(--ow)"></div>
+        <span class="chip-name ow">OPEN WATER</span>
+      </div>
+    </div>
+
+    <div class="hero-actions">
+      <a href="#apps" class="btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2v12M8 10l4 4 4-4M3 18h18"/></svg>
+        Get the apps
+      </a>
+      <a href="#how" class="btn-ghost">How it works</a>
+    </div>
+
+    <div class="hero-auth-note">
+      <div class="google-g">G</div>
+      Google sign-in active · Email login coming
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">4<span>×</span></div><div class="stat-label">Specialized apps</div></div>
+      <div class="stat"><div class="stat-num">5</div><div class="stat-label">Training zones</div></div>
+      <div class="stat"><div class="stat-num">IT<span>/</span>EN</div><div class="stat-label">Bilingual</div></div>
+      <div class="stat"><div class="stat-num">PWA</div><div class="stat-label">Install on any device</div></div>
+    </div>
+
+  </div>
+
+  <div class="scroll-hint">
+    <div class="scroll-hint-line"></div>
+    <div class="scroll-hint-label">Scroll</div>
+  </div>
+</section>
+
+<!-- APPS -->
+<section class="apps-section" id="apps">
+  <div class="section-header">
+    <div class="section-overline">The ecosystem</div>
+    <h2 class="section-title">Four apps.<br><span>One platform.</span></h2>
+  </div>
+
+  <div class="apps-grid">
+
+    <!-- COACH -->
+    <div class="app-card coach">
+      <div class="app-card-bg-letter">C</div>
+      <div class="app-icon-mark">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M3 12 Q6 7, 9 12 Q12 17, 15 12 Q18 7, 21 12" stroke="#c8ff00" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <rect x="3" y="3" width="18" height="1.5" rx="0.75" fill="rgba(200,255,0,0.3)"/>
+          <rect x="3" y="19.5" width="18" height="1.5" rx="0.75" fill="rgba(200,255,0,0.3)"/>
+        </svg>
+      </div>
+      <div class="app-parent-label">AQUACORE.AI</div>
+      <div class="app-product-name">ACore Coach</div>
+      <p class="app-description">The pace engine for masters swimming coaches. Calculate personalized training zones for every athlete in your roster, instantly.</p>
+      <div class="app-features">
+        <div class="app-feature">Zone-based pace calculator (A2 → C2)</div>
+        <div class="app-feature">Multi-athlete roster with PB history</div>
+        <div class="app-feature">Hydro-Load stress scoring</div>
+        <div class="app-feature">25m / 50m / 25yd pool modes</div>
+        <div class="app-feature">Print-ready training sheets</div>
+      </div>
+      <a href="https://coach.getaquacore.com" class="app-install-btn">
+        <span style="display:flex;align-items:center;gap:7px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v12M8 10l4 4 4-4M3 18h18"/></svg>
+          Open ACore Coach
+        </span>
+        <span class="install-arrow">→</span>
+      </a>
+    </div>
+
+    <!-- TRIATHLETE -->
+    <div class="app-card tri">
+      <div class="app-card-bg-letter">T</div>
+      <div class="app-icon-mark">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <polygon points="12,3 21,20 3,20" stroke="#ff6b35" stroke-width="1.8" fill="none" stroke-linejoin="round"/>
+          <line x1="12" y1="3" x2="12" y2="20" stroke="rgba(255,107,53,0.3)" stroke-width="1.2"/>
+        </svg>
+      </div>
+      <div class="app-parent-label">AQUACORE.AI</div>
+      <div class="app-product-name">ACore Triathlete</div>
+      <p class="app-description">A bilingual PWA tracker built for triathletes. Track swim, bike and run with GPS, heart rate and power — then sync with your watch.</p>
+      <div class="app-features">
+        <div class="app-feature">GPS tracking — swim, bike, run</div>
+        <div class="app-feature">Bluetooth HR / power / cadence</div>
+        <div class="app-feature">Race planner + gear checklist</div>
+        <div class="app-feature">Garmin & Strava sync (coming)</div>
+        <div class="app-feature">Periodized training plans</div>
+      </div>
+      <a href="https://triathlete.getaquacore.com" class="app-install-btn">
+        <span style="display:flex;align-items:center;gap:7px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v12M8 10l4 4 4-4M3 18h18"/></svg>
+          Open ACore Triathlete
+        </span>
+        <span class="install-arrow">→</span>
+      </a>
+    </div>
+
+    <!-- ATHLETE -->
+    <div class="app-card athlete">
+      <div class="app-card-bg-letter">A</div>
+      <div class="app-icon-mark">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M12 3 L14.5 9.5 L21 10.2 L16.5 14.5 L17.8 21 L12 17.8 L6.2 21 L7.5 14.5 L3 10.2 L9.5 9.5 Z" stroke="#a855f7" stroke-width="1.6" fill="none" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="app-parent-label">AQUACORE.AI</div>
+      <div class="app-product-name">ACore Athlete</div>
+      <p class="app-description">Advanced performance analytics for competitive swimmers. Track PBs across all strokes, visualize progression, and benchmark against your best.</p>
+      <div class="app-features">
+        <div class="app-feature">Personal best tracking — all strokes</div>
+        <div class="app-feature">Performance progression charts</div>
+        <div class="app-feature">Season analytics dashboard</div>
+        <div class="app-feature">Competition history log</div>
+        <div class="app-feature">Target pace calculator</div>
+      </div>
+      <a href="https://athlete.getaquacore.com" class="app-install-btn">
+        <span style="display:flex;align-items:center;gap:7px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v12M8 10l4 4 4-4M3 18h18"/></svg>
+          Open ACore Athlete
+        </span>
+        <span class="install-arrow">→</span>
+      </a>
+    </div>
+
+    <!-- OPEN WATER -->
+    <div class="app-card ow">
+      <div class="app-card-bg-letter">O</div>
+      <div class="app-icon-mark">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+          <path d="M2 14 Q5 10, 8 14 Q11 18, 14 14 Q17 10, 22 14" stroke="#00c8ff" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M2 9 Q5 5, 8 9 Q11 13, 14 9 Q17 5, 22 9" stroke="rgba(0,200,255,0.35)" stroke-width="1.4" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="app-parent-label">AQUACORE.AI</div>
+      <div class="app-product-name">ACore Open Water</div>
+      <p class="app-description">Specialized tracking for open water swimmers. GPS route mapping, water temperature logging, conditions log and race-day preparation tools.</p>
+      <div class="app-features">
+        <div class="app-feature">GPS open water route tracking</div>
+        <div class="app-feature">Water temperature & conditions log</div>
+        <div class="app-feature">Route replay & distance analysis</div>
+        <div class="app-feature">Race-day preparation checklists</div>
+        <div class="app-feature">Live safety sharing (Pro)</div>
+      </div>
+      <a href="https://openwater.getaquacore.com" class="app-install-btn">
+        <span style="display:flex;align-items:center;gap:7px;">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2v12M8 10l4 4 4-4M3 18h18"/></svg>
+          Open ACore Open Water
+        </span>
+        <span class="install-arrow">→</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how">
+  <div class="section-header">
+    <div class="section-overline">Get started in 60 seconds</div>
+    <h2 class="section-title">No download.<br><span>No friction.</span></h2>
+  </div>
+  <div class="steps-grid">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-title">Open the app</div>
+      <p class="step-desc">Tap the link for the app you need. It opens instantly in your browser — no App Store, no account required to get started.</p>
+      <div class="step-note">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
+        Google sign-in active · Email login coming
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-title">Install to home screen</div>
+      <p class="step-desc">Tap "Add to Home Screen" on iOS or Android. The app installs as a native PWA — full screen, works offline.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-title">Train. Race. Repeat.</div>
+      <p class="step-desc">All data stored locally on your device. Fast, private, no internet required. Your performance history is always with you.</p>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-title">Sync coming soon</div>
+      <p class="step-desc">Cloud sync via Google account, cross-device access, Garmin and Strava integration. One ecosystem — zero friction.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ECOSYSTEM -->
+<section class="ecosystem-strip" id="ecosystem">
+  <h2 class="eco-title">One platform.<br><span>Built to scale.</span></h2>
+  <p class="eco-sub">Every AQUACORE.AI app shares the same design system, data architecture, and obsession with aquatic performance.</p>
+  <div class="eco-tech-stack">
+    <span class="tech-pill highlight">PWA · Installable</span>
+    <span class="tech-pill highlight">Google sign-in ✓</span>
+    <span class="tech-pill highlight">Supabase backend ✓</span>
+    <span class="tech-pill">Offline first</span>
+    <span class="tech-pill">Web Bluetooth BLE</span>
+    <span class="tech-pill">GPS tracking</span>
+    <span class="tech-pill">Bilingual IT / EN</span>
+    <span class="tech-pill">Netlify deploy</span>
+    <span class="tech-pill">Garmin sync (coming)</span>
+    <span class="tech-pill">Strava sync (coming)</span>
+    <span class="tech-pill">No tracking · No ads</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <a href="https://getaquacore.com" class="footer-logo">
+    <svg width="20" height="20" viewBox="0 0 100 100" fill="none">
+      <path d="M5 25H75L95 50L75 75H5L25 50L5 25Z" fill="#00c8ff"/>
+      <path d="M25 37H70L80 50L70 63H25L35 50L25 37Z" fill="#020810"/>
+      <path d="M45 45H65L69 50L65 55H45L49 50L45 45Z" fill="#00c8ff"/>
+    </svg>
+    <div class="footer-logo-name">AQUA<span>CORE</span>.AI</div>
+  </a>
+  <div class="footer-copy">© 2025 AQUACORE.AI · getaquacore.com · Intelligent Aquatic Performance</div>
+  <div class="footer-links">
+    <a href="https://coach.getaquacore.com">Coach</a>
+    <a href="https://triathlete.getaquacore.com">Triathlete</a>
+    <a href="https://athlete.getaquacore.com">Athlete</a>
+    <a href="https://openwater.getaquacore.com">Open Water</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="terms.html">Terms</a>
+  </div>
+</footer>
+
+<!-- PWA TOAST -->
+<div class="pwa-toast" id="pwaToast">
+  <div class="pwa-toast-text">Install <span>AQUACORE.AI</span></div>
+  <button class="pwa-toast-btn" id="pwaInstallBtn">Install</button>
+  <button class="pwa-toast-close" onclick="document.getElementById('pwaToast').classList.remove('show')">✕</button>
+</div>
+
+<script>
+  let deferredPrompt = null;
+  window.addEventListener('beforeinstallprompt', e => {
+    e.preventDefault(); deferredPrompt = e;
+    setTimeout(() => document.getElementById('pwaToast').classList.add('show'), 3000);
+  });
+  document.getElementById('pwaInstallBtn').addEventListener('click', async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    await deferredPrompt.userChoice;
+    deferredPrompt = null;
+    document.getElementById('pwaToast').classList.remove('show');
+  });
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+  window.addEventListener('scroll', () => {
+    document.getElementById('mainNav').style.background =
+      window.scrollY > 50 ? 'rgba(2,8,16,0.97)' : 'rgba(2,8,16,0.88)';
+  });
+</script>
+</body>
+</html>

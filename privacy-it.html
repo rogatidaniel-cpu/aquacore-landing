@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Privacy Policy — AQUACORE.AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root {
+  --void:   #020810;
+  --deep:   #060d18;
+  --mid:    #0b1422;
+  --raised: #111d30;
+  --ink-hi:  #f0f6ff;
+  --ink-mid: #7a9ab8;
+  --ink-lo:  #3d5470;
+  --ow:      #00c8ff;
+  --font-ui: 'Syne', system-ui, sans-serif;
+  --font-m:  'DM Mono', monospace;
+}
+
+body {
+  background: var(--void);
+  color: var(--ink-hi);
+  font-family: var(--font-m);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+.legal-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  max-width: 760px; margin: 0 auto;
+}
+.legal-nav a { text-decoration: none; }
+.legal-logo {
+  font-family: var(--font-ui); font-weight: 800; font-size: 0.95rem;
+  color: var(--ink-hi); letter-spacing: -0.01em;
+}
+.legal-logo span { color: var(--ow); }
+.lang-switch {
+  font-family: var(--font-m); font-size: 0.7rem; letter-spacing: 0.06em;
+  color: var(--ink-lo);
+}
+.lang-switch a { color: var(--ink-mid); transition: color 0.2s; }
+.lang-switch a:hover { color: var(--ow); }
+.lang-switch .active { color: var(--ow); font-weight: 500; }
+
+main {
+  max-width: 760px; margin: 0 auto;
+  padding: 48px 24px 96px;
+}
+
+h1 {
+  font-family: var(--font-ui); font-weight: 800;
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  letter-spacing: -0.01em; margin-bottom: 8px;
+}
+.updated {
+  font-size: 0.72rem; color: var(--ink-lo); letter-spacing: 0.04em;
+  margin-bottom: 40px;
+}
+
+h2 {
+  font-family: var(--font-ui); font-weight: 700;
+  font-size: 1.15rem; color: var(--ink-hi);
+  margin: 40px 0 14px;
+}
+p { font-size: 0.88rem; color: var(--ink-mid); margin-bottom: 14px; }
+strong { color: var(--ink-hi); font-weight: 500; }
+a.inline { color: var(--ow); text-decoration: underline; }
+
+ul { margin: 0 0 14px 20px; }
+li { font-size: 0.88rem; color: var(--ink-mid); margin-bottom: 6px; }
+
+table {
+  width: 100%; border-collapse: collapse;
+  font-size: 0.82rem; margin: 16px 0 24px;
+}
+th, td {
+  text-align: left; padding: 10px 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  color: var(--ink-mid);
+}
+th { color: var(--ink-hi); font-family: var(--font-ui); font-weight: 700; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.04em; }
+
+footer {
+  border-top: 1px solid rgba(255,255,255,0.06);
+  padding: 28px 24px; text-align: center;
+  font-size: 0.72rem; color: var(--ink-lo);
+}
+footer a { color: var(--ink-mid); text-decoration: none; }
+footer a:hover { color: var(--ow); }
+</style>
+</head>
+<body>
+
+<nav class="legal-nav">
+  <a href="https://getaquacore.com" class="legal-logo">AQUA<span>CORE</span>.AI</a>
+  <div class="lang-switch">
+    <a href="privacy.html">EN</a> · <span class="active">IT</span>
+  </div>
+</nav>
+
+<main>
+  <h1>Privacy Policy</h1>
+  <div class="updated">Ultimo aggiornamento: [DATA DA INSERIRE AL LANCIO]</div>
+
+  <h2>1. Chi siamo</h2>
+  <p>AQUACORE.AI è una piattaforma per la performance sportiva acquatica composta da quattro applicazioni web (ACore Athlete, ACore Coach, ACore Triathlete, ACore Open Water), di seguito "le App" o "il Servizio".</p>
+  <p><strong>Titolare del trattamento:</strong> Daniel Rogati<br><strong>Contatto:</strong> rogatidaniel@gmail.com</p>
+  <p>Essendo AQUACORE.AI gestito da una persona fisica (nessuna società costituita al momento), il titolare del trattamento coincide con il fondatore.</p>
+
+  <h2>2. Dati che raccogliamo</h2>
+  <p><strong>2.1 Dati forniti direttamente dall'utente</strong></p>
+  <ul>
+    <li>Indirizzo email (registrazione e login)</li>
+    <li>Dati di autenticazione Google, se scegli il login con Google (gestiti da Google, non li conserviamo noi)</li>
+    <li>Dati sportivi: tempi, distanze, sessioni di allenamento, personal best (PB), zone di allenamento</li>
+    <li>Per ACore Coach: dati relativi agli atleti inseriti dall'allenatore (vedi sezione 2.4)</li>
+  </ul>
+
+  <p><strong>2.2 Dati raccolti automaticamente</strong></p>
+  <ul>
+    <li>Indirizzo IP e user agent del browser (tramite l'hosting Netlify, per motivi di sicurezza e prestazioni)</li>
+    <li>Dati di utilizzo dell'app — al momento non utilizziamo strumenti di analytics di terze parti</li>
+  </ul>
+
+  <p><strong>2.3 Dati di pagamento</strong></p>
+  <p>I pagamenti per gli abbonamenti Pro sono gestiti integralmente da <strong>Lemon Squeezy</strong>, che agisce come Merchant of Record. Lemon Squeezy raccoglie e processa i dati della tua carta di credito/metodo di pagamento — <strong>AQUACORE.AI non vede né conserva mai i dati della tua carta</strong>. Riceviamo solo la conferma dello stato dell'abbonamento e l'email associata all'acquisto.</p>
+
+  <p><strong>2.4 Dati inseriti da terzi (ACore Coach)</strong></p>
+  <p>Se sei un allenatore che usa ACore Coach, puoi inserire dati relativi ai tuoi atleti (nome, tempi, personal best). In questo caso:</p>
+  <ul>
+    <li><strong>Tu, allenatore, sei responsabile</strong> di aver ottenuto il consenso dell'atleta (o del suo tutore legale, se minorenne) prima di inserire i suoi dati nella piattaforma</li>
+    <li>AQUACORE.AI agisce come fornitore tecnico della piattaforma che ospita questi dati, ma non ha un rapporto diretto con l'atleta i cui dati vengono inseriti da terzi</li>
+  </ul>
+
+  <p><strong>2.5 Localizzazione GPS (ACore Open Water — funzione di sicurezza)</strong></p>
+  <p>ACore Open Water include (o include in una versione futura) una funzione di condivisione della posizione in tempo reale, pensata per la sicurezza durante l'allenamento in acque libere. Quando attivi questa funzione:</p>
+  <ul>
+    <li>La tua posizione GPS viene condivisa con i contatti che tu scegli esplicitamente (es. un contatto di emergenza)</li>
+    <li>La condivisione è <strong>sempre attivata manualmente da te</strong> e puoi interromperla in qualsiasi momento</li>
+    <li>I dati di posizione storici non vengono conservati oltre la durata della sessione, salvo tua scelta esplicita di salvarli nello storico</li>
+  </ul>
+
+  <h2>3. Perché trattiamo i tuoi dati</h2>
+  <table>
+    <tr><th>Finalità</th><th>Base giuridica</th></tr>
+    <tr><td>Fornire il servizio (calcolo zone, storico allenamenti)</td><td>Esecuzione di un contratto</td></tr>
+    <tr><td>Autenticazione e sicurezza account</td><td>Esecuzione di un contratto</td></tr>
+    <tr><td>Gestione abbonamenti Pro</td><td>Esecuzione di un contratto</td></tr>
+    <tr><td>Funzione di sicurezza GPS (Open Water)</td><td>Consenso esplicito</td></tr>
+    <tr><td>Comunicazioni di servizio</td><td>Esecuzione di un contratto / Legittimo interesse</td></tr>
+  </table>
+
+  <h2>4. Dove sono conservati i tuoi dati</h2>
+  <p><strong>Database principale:</strong> Supabase, infrastruttura nella regione UE (Frankfurt, Germania) — i tuoi dati restano in territorio europeo.</p>
+  <p><strong>Dati locali sul dispositivo:</strong> lo storico dei piani di allenamento Pro viene salvato anche localmente nel tuo browser tramite Dexie/IndexedDB, e non lascia il tuo dispositivo se non sincronizzato.</p>
+  <p><strong>Hosting:</strong> Netlify (CDN globale, standard per la distribuzione dei contenuti web).</p>
+
+  <h2>5. Con chi condividiamo i tuoi dati</h2>
+  <p>Non vendiamo né condividiamo i tuoi dati con terzi per finalità di marketing. I dati vengono condivisi solo con i fornitori di servizio strettamente necessari al funzionamento della piattaforma:</p>
+  <ul>
+    <li><strong>Supabase</strong> (database e autenticazione)</li>
+    <li><strong>Lemon Squeezy</strong> (pagamenti, in qualità di Merchant of Record)</li>
+    <li><strong>Google</strong> (solo se scegli il login con Google)</li>
+    <li><strong>Netlify</strong> (hosting)</li>
+    <li>I contatti <strong>che tu stesso scegli</strong> per la condivisione GPS di sicurezza (Open Water)</li>
+  </ul>
+
+  <h2>6. Per quanto tempo conserviamo i tuoi dati</h2>
+  <p>Conserviamo i tuoi dati per tutta la durata in cui il tuo account è attivo. Se richiedi la cancellazione dell'account, i dati personali vengono eliminati entro 30 giorni, salvo obblighi di legge che richiedano una conservazione più lunga (es. dati fiscali relativi a pagamenti, conservati secondo le tempistiche richieste da Lemon Squeezy come Merchant of Record).</p>
+
+  <h2>7. I tuoi diritti</h2>
+  <p>In quanto residente nell'Unione Europea (o cittadino UE), hai diritto ad accedere, correggere, cancellare o richiedere la portabilità dei tuoi dati, opporti al trattamento, e revocare il consenso in qualsiasi momento (es. disattivare la condivisione GPS).</p>
+  <p>Per esercitare questi diritti, scrivi a <strong>rogatidaniel@gmail.com</strong>.</p>
+  <p>Hai inoltre diritto a presentare reclamo al Garante per la Protezione dei Dati Personali (<a class="inline" href="https://www.garanteprivacy.it" target="_blank" rel="noopener">www.garanteprivacy.it</a>) se ritieni che il trattamento dei tuoi dati violi la normativa GDPR.</p>
+
+  <h2>8. Età minima</h2>
+  <p>Il Servizio è destinato a utenti di <strong>almeno 18 anni</strong>. Non raccogliamo consapevolmente dati di minorenni attraverso la registrazione diretta. Fa eccezione il caso descritto al punto 2.4 (dati di atleti minorenni inseriti da un allenatore), per cui la responsabilità del consenso resta in capo all'allenatore.</p>
+
+  <h2>9. Sicurezza</h2>
+  <p>Adottiamo misure tecniche adeguate (autenticazione sicura, infrastruttura Supabase con crittografia, accesso limitato ai dati) per proteggere i tuoi dati. Nessun sistema è però sicuro al 100% e non possiamo garantire una sicurezza assoluta.</p>
+
+  <h2>10. Modifiche a questa policy</h2>
+  <p>Possiamo aggiornare questa Privacy Policy in futuro, specialmente con l'aggiunta di nuove funzionalità o fornitori di servizio. Le modifiche sostanziali ti saranno comunicate tramite l'app o via email.</p>
+
+  <h2>11. Contatti</h2>
+  <p>Per qualsiasi domanda su questa Privacy Policy: <strong>rogatidaniel@gmail.com</strong></p>
+</main>
+
+<footer>
+  <a href="https://getaquacore.com">← Torna a AQUACORE.AI</a> ·
+  <a href="terms-it.html">Termini di Servizio</a>
+</footer>
+
+</body>
+</html>
