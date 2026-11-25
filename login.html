@@ -86,8 +86,8 @@ body::after {
 }
 
 /* ── LOGO ── */
-.logo { display: flex; align-items: center; gap: 13px; margin-bottom: 40px; }
-.logo img { height: 44px; width: auto; flex-shrink: 0; }
+.logo { display: flex; flex-direction: column; align-items: center; gap: 8px; margin-bottom: 40px; }
+.logo img { height: 40px; width: auto; max-width: 85vw; flex-shrink: 0; }
 .logo-text { display: flex; flex-direction: column; gap: 3px; }
 .logo-name {
   font-family: var(--font); font-size: 1.2rem; font-weight: 800;
@@ -292,11 +292,8 @@ footer {
 
   <!-- LOGO -->
   <div class="logo">
-    <img src="aquacore-mark.png" alt="AQUACORE.AI" width="77" height="44">
-    <div class="logo-text">
-      <span class="logo-name">AQUA<span>CORE</span>.AI</span>
-      <span class="logo-sub">Swim · Tri · Master</span>
-    </div>
+    <img src="aquacore-logo.png" alt="aquacore.ai" width="184" height="40">
+    <span class="logo-sub">Swim · Tri · Master</span>
   </div>
 
   <!-- LOGIN STATE -->

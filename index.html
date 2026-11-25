@@ -64,6 +64,7 @@ nav {
   transition: background 0.3s;
 }
 .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.nav-logo-img { height: 28px; width: auto; }
 .nav-logo-name {
   font-family: var(--font-ui); font-size: 1rem; font-weight: 800;
   letter-spacing: -0.02em; color: var(--ink-hi);
@@ -126,11 +127,12 @@ nav {
 }
 
 .hero-brand {
-  display: flex; align-items: center; gap: 16px;
+  display: flex; flex-direction: column; align-items: center; gap: 10px;
   margin-bottom: 36px;
   animation: fadeUp 0.7s ease both;
 }
 .hero-brand-mark { height: 56px; width: auto; }
+.hero-brand-logo { height: 64px; width: auto; max-width: 90vw; }
 .hero-brand-text { display: flex; flex-direction: column; gap: 3px; text-align: left; }
 .hero-brand-name {
   font-family: var(--font-ui); font-size: 2rem; font-weight: 800;
@@ -449,6 +451,7 @@ footer {
   align-items: center; flex-wrap: wrap; gap: 16px;
 }
 .footer-logo { display: flex; align-items: center; gap: 9px; text-decoration: none; }
+.footer-logo-img { height: 20px; width: auto; }
 .footer-logo-name {
   font-family: var(--font-ui); font-size: 0.9rem; font-weight: 800;
   letter-spacing: -0.02em; color: var(--ink-hi);
@@ -505,8 +508,7 @@ footer {
 <!-- NAV -->
 <nav id="mainNav">
   <a href="https://getaquacore.com" class="nav-logo">
-    <img src="aquacore-mark.png" alt="AQUACORE.AI" width="49" height="28">
-    <div class="nav-logo-name">AQUA<span>CORE</span>.AI</div>
+    <img class="nav-logo-img" src="aquacore-logo.png" alt="aquacore.ai" width="129" height="28">
   </a>
   <div class="nav-links">
     <a href="#apps">Apps</a>
@@ -535,11 +537,8 @@ footer {
   <div class="hero-content">
 
     <div class="hero-brand">
-      <img class="hero-brand-mark" src="aquacore-mark.png" alt="AQUACORE.AI" width="98" height="56">
-      <div class="hero-brand-text">
-        <div class="hero-brand-name">AQUA<span>CORE</span>.AI</div>
-        <div class="hero-brand-tagline">Intelligent Aquatic Performance</div>
-      </div>
+      <img class="hero-brand-logo" src="aquacore-logo.png" alt="aquacore.ai" width="294" height="64">
+      <div class="hero-brand-tagline">Intelligent Aquatic Performance</div>
     </div>
 
     <h1 class="hero-claim">
@@ -776,8 +775,7 @@ footer {
 <!-- FOOTER -->
 <footer>
   <a href="https://getaquacore.com" class="footer-logo">
-    <img src="aquacore-mark.png" alt="AQUACORE.AI" width="35" height="20">
-    <div class="footer-logo-name">AQUA<span>CORE</span>.AI</div>
+    <img class="footer-logo-img" src="aquacore-logo.png" alt="aquacore.ai" width="92" height="20">
   </a>
   <div class="footer-copy">© 2025 AQUACORE.AI · getaquacore.com · Intelligent Aquatic Performance</div>
   <div class="footer-links">
